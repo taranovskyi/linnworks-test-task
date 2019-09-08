@@ -1,0 +1,7 @@
+docker*
+Docker*
+.git
+.idea
+**/bin
+**/obj
+**/node_modules

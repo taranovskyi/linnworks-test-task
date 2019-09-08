@@ -1,0 +1,53 @@
+version: '2.3'
+
+services:
+  linnworks:
+    build:
+      context: .
+      dockerfile: Dockerfile-run-app
+    image: linnworks
+    container_name: linnworks
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+    ports:
+      - "59510:80"
+    depends_on:
+      mssql:
+        condition: service_healthy
+  mssql:
+    build: ./local-db
+    image: mcr.microsoft.com/mssql/server:2017-CU14-ubuntu
+    container_name: mssql
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: yourStrong(!)Password
+    ports:
+      - "1433:1433"
+    tty: true
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-U", "sa", "-P", "yourStrong(!)Password", "-Q", "select 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  selenium:
+    image: selenium/standalone-chrome-debug:3.141
+    container_name: selenium
+    ports:
+      - "4444:4444"
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      linnworks:
+        condition: service_healthy
+  linnworks-ui-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile-ui-tests
+    image: linnworks-ui-tests
+    container_name: linnworks-ui-tests
+    depends_on:
+      selenium:
+        condition: service_started

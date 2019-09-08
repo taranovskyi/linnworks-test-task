@@ -1,0 +1,26 @@
+version: '2.3'
+
+services:
+  linnworks-build-run-unit-integration-tests:
+    build:
+      context: .
+    image: linnworks-build-run-unit-integration-tests
+    container_name: linnworks-build-run-unit-integration-tests
+    depends_on:
+      mssql:
+        condition: service_healthy
+  mssql:
+    build: ./local-db
+    image: mcr.microsoft.com/mssql/server:2017-CU14-ubuntu
+    container_name: mssql
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: yourStrong(!)Password
+    ports:
+      - "1433:1433"
+    tty: true
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-U", "sa", "-P", "yourStrong(!)Password", "-Q", "select 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5

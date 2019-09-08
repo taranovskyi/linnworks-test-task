@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinnworksTest", "LinnworksTest\LinnworksTest.csproj", "{9D334A4B-2126-44F6-9C09-4D1C7C51C2E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linnworks.IntegrationTests", "Linnworks.IntegrationTests\Linnworks.IntegrationTests.csproj", "{30C615A9-5597-44A0-A3F9-F8E29CAEA986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linnworks.UnitTests", "Linnworks.UnitTests\Linnworks.UnitTests.csproj", "{B05D3159-1D68-4079-BEAE-84A1899B5A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linnworks.UITests", "Linnworks.UITests\Linnworks.UITests.csproj", "{6380A51C-8775-4B3C-89DB-7ABF6066A669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linnworks.DatabaseOperations", "Linnworks.DatabaseOperations\Linnworks.DatabaseOperations.csproj", "{5C915DE7-3ABD-4222-A5FC-FA3F6F60D8CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D334A4B-2126-44F6-9C09-4D1C7C51C2E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D334A4B-2126-44F6-9C09-4D1C7C51C2E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D334A4B-2126-44F6-9C09-4D1C7C51C2E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D334A4B-2126-44F6-9C09-4D1C7C51C2E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30C615A9-5597-44A0-A3F9-F8E29CAEA986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30C615A9-5597-44A0-A3F9-F8E29CAEA986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30C615A9-5597-44A0-A3F9-F8E29CAEA986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30C615A9-5597-44A0-A3F9-F8E29CAEA986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B05D3159-1D68-4079-BEAE-84A1899B5A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B05D3159-1D68-4079-BEAE-84A1899B5A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B05D3159-1D68-4079-BEAE-84A1899B5A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B05D3159-1D68-4079-BEAE-84A1899B5A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6380A51C-8775-4B3C-89DB-7ABF6066A669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6380A51C-8775-4B3C-89DB-7ABF6066A669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6380A51C-8775-4B3C-89DB-7ABF6066A669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6380A51C-8775-4B3C-89DB-7ABF6066A669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C915DE7-3ABD-4222-A5FC-FA3F6F60D8CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C915DE7-3ABD-4222-A5FC-FA3F6F60D8CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C915DE7-3ABD-4222-A5FC-FA3F6F60D8CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C915DE7-3ABD-4222-A5FC-FA3F6F60D8CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BF7BBD4-F470-43EF-A748-302182E0402F}
+	EndGlobalSection
+EndGlobal

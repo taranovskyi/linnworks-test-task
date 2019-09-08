@@ -1,0 +1,13 @@
+version: '2.3'
+
+services:
+  linnworks-local-db:
+    build: .
+    image: linnworks-local-db
+    container_name: linnworks-local-db
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: yourStrong(!)Password
+    ports:
+      - "1433:1433"
+    tty: true

@@ -1,0 +1,4 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1
+WORKDIR /app
+COPY . .
+CMD dotnet test Linnworks.UITests
