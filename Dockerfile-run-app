@@ -9,12 +9,7 @@ RUN apt-get update && \
     apt-get install -y gnupg2 && \
     wget -qO- https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y build-essential nodejs
-# Copy everything else and build
+
 RUN dotnet publish -c Release -o out
 
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.1
-WORKDIR /app
-ENV ASPNETCORE_ENVIRONMENT=Development
-COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "LinnworksTest.dll"]
+ENTRYPOINT ["dotnet", "watch", "run", "--no-restore"]
