@@ -1,4 +1,3 @@
-using System.IO;
 using LinnworksTest.DataAccess;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -9,7 +8,6 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace LinnworksTest
@@ -46,14 +44,23 @@ namespace LinnworksTest
 			{
 				c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
 			});
-            
-            services.AddDbContext<CategoriesManagementContext>
-                (options => options.UseSqlServer(Configuration.GetConnectionString("LinnworksDatabase")));
+			ConfigureDatabase(services);
+        }
+
+		protected virtual void ConfigureDatabase(IServiceCollection services)
+		{
+			services.AddDbContext<CategoriesManagementContext>
+				(options => options.UseSqlServer(Configuration.GetConnectionString("LinnworksDatabase")));
             
 
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped<ITokenRepository, TokenRepository>();
-        }
+			services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+			services.AddScoped<ITokenRepository, TokenRepository>();
+		}
+
+		protected virtual void ConfigureAuth(IApplicationBuilder app)
+		{
+			app.UseAuthentication();
+		} 
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
