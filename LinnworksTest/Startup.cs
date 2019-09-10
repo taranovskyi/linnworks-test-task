@@ -1,8 +1,10 @@
+using System.IO;
 using LinnworksTest.DataAccess;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,7 +40,7 @@ namespace LinnworksTest
 			{
 				configuration.RootPath = "ClientApp/dist";
 			});
-
+			
 			// Register the Swagger generator, defining 1 or more Swagger documents
 			services.AddSwaggerGen(c =>
 			{
@@ -81,6 +83,7 @@ namespace LinnworksTest
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			app.UseSpaStaticFiles();
+			
 
 			app.UseMvc(routes =>
 			{
@@ -88,12 +91,16 @@ namespace LinnworksTest
 					name: "default",
 					template: "{controller}/{action=Index}/{id?}");
 			});
+			
+			app.UseRewriter(new RewriteOptions()
+				.AddRedirect("index.html", "/"));
 
 			app.UseSpa(spa =>
 			{
 				// To learn more about options for serving an Angular SPA from ASP.NET Core,
 				// see https://go.microsoft.com/fwlink/?linkid=864501
 
+				//spa.Options.SourcePath = Path.Join(env.ContentRootPath, "ClientApp");
 				spa.Options.SourcePath = "ClientApp";
 
 				if (env.IsDevelopment())
